@@ -1,44 +1,46 @@
-from pdf2image import convert_from_path
+import fitz 
 from fpdf import FPDF
 import os
+import config
 
-# Function to convert PDF pages to images and then to individual PDFs
-def pdf_pages_to_image_pdfs(pdf_path, output_dir):
+def pdf_pages_to_individual_pdfs_with_pymupdf(pdf_path, output_dir):
     try:
-        # Ensure the output directory exists
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
             print(f"Created output directory: {output_dir}")
 
-        # Step 1: Convert and process each page individually
-        print(f"Converting PDF: {pdf_path}")
-        
-        # Loop through each page of the PDF
-        for i in range(1, 301):  # Adjust the range according to the number of pages
-            pages = convert_from_path(pdf_path, first_page=i, last_page=i)
-            page = pages[0]
-            
-            # Save each page as an image file
-            image_path = os.path.join(output_dir, f"page_{i}.png")
-            page.save(image_path, 'PNG')
-            print(f"Saved image: {image_path}")
+        doc = fitz.open(pdf_path)
+        total_pages = doc.page_count
+        print(f"PDF has {total_pages} pages")
 
-            # Create a new PDF file for each image
+        for i in range(total_pages):
+            page = doc.load_page(i)
+            pix = page.get_pixmap()
+            image_path = os.path.join(output_dir, f"page_{i + 1}.png")
+            pix.save(image_path)
+
             pdf = FPDF()
             pdf.add_page()
-            pdf.image(image_path, 0, 0, 210, 297)  # A4 size
-            pdf_output_path = os.path.join(output_dir, f"page_{i}.pdf")
+            pdf.image(image_path, 0, 0, 210, 297)
+            pdf_output_path = os.path.join(output_dir, f"page_{i + 1}.pdf")
             pdf.output(pdf_output_path)
             print(f"Saved PDF: {pdf_output_path}")
+
+            os.remove(image_path)
 
         print(f"All pages have been converted to separate PDF files in {output_dir}")
     except Exception as e:
         print(f"An error occurred: {e}")
 
 # Example usage
-base_path = os.path.dirname(__file__)  # Directory of the script
-input_path = os.path.join(base_path, 'Input')  # Path to the asset directory
-pdf_path = os.path.join(input_path, "金融骗术种类.pdf")  # Replace with your PDF file path
-output_dir = os.path.join(base_path, 'Output')  # Path to the output directory
+base_path = os.path.dirname(__file__)
+input_path = os.path.join(base_path, 'Input')
+pdf_path = os.path.join(input_path, config.name + ".pdf")
+output_dir = os.path.join(base_path, 'Output')
 
-pdf_pages_to_image_pdfs(pdf_path, output_dir)
+# Ensure that a subdirectory for the specific PDF file exists in the output directory
+output_subdir = os.path.join(output_dir, config.name)
+if not os.path.isdir(output_subdir):
+   os.makedirs(output_subdir)
+
+pdf_pages_to_individual_pdfs_with_pymupdf(pdf_path, output_subdir)
