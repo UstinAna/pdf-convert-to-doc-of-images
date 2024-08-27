@@ -12,6 +12,7 @@ def install_package(package):
 if __name__ == "__main__":
     # List of packages to install
     packages = [
+        "wheel", 
         "fitz",  # PyMuPDF
         "fpdf"
         # Add more packages here if needed
