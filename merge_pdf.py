@@ -1,7 +1,7 @@
 import os
 from PyPDF2 import PdfMerger
+import logging
 import re
-import config
 
 # Function to sort filenames naturally (e.g., "page_1.pdf", "page_2.pdf", ..., "page_10.pdf")
 def natural_sort_key(s):
@@ -33,9 +33,9 @@ def merge_pdfs(input_dir, output_pdf_path):
     except Exception as e:
         print(f"An error occurred: {e}")
 
-# Example usage
-base_path = os.path.dirname(__file__)
-input_dir = os.path.join(base_path, 'Output', config.name)  # Directory containing the PDFs
-output_pdf_path = os.path.join(base_path, 'Output', config.name + '.pdf')  # Output file path
+if __name__ == "__main__":
+    base_path = os.path.dirname(__file__)
+    input_dir = os.path.join(base_path, 'Output', config.name)  # Directory containing the PDFs
+    output_pdf_path = os.path.join(base_path, 'Output', config.name + '.pdf')  # Output file path
 
-merge_pdfs(input_dir, output_pdf_path)
+    merge_pdfs(input_dir, output_pdf_path)
