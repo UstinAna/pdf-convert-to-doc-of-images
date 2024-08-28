@@ -1,6 +1,8 @@
 # PDF and Image Processing Toolkit
 
-This project provides a set of tools for handling PDFs and images, including converting PDFs to DOCX files, merging PDFs, and converting PDFs to images. It is designed to be flexible and easy to use for various PDF-related tasks.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+**PDF and Image Processing Toolkit** is an open-source project that provides a set of tools for handling PDFs and images. This toolkit includes functionality for converting PDFs to DOCX files, merging PDFs, and converting PDFs to images, making it easy to perform various PDF-related tasks efficiently.
 
 ## Features
 
@@ -8,7 +10,9 @@ This project provides a set of tools for handling PDFs and images, including con
 - **Merge PDF Files**: Merge multiple PDF files into a single document.
 - **Convert PDF to Images**: Convert each page of a PDF document into separate image files.
 
-## Requirements
+## Getting Started
+
+### Installation
 
 To run this project, you need to have Python 3 installed, along with the following Python packages:
 
