@@ -1,0 +1,5 @@
+# write pip install -r requirment.txt
+# PDF and Image Processing
+pymupdf==1.20.0          # PyMuPDF for PDF handling
+pdf2docx==0.5.1          # Convert PDF to DOCX
+pypdf2==3.0.1
