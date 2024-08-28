@@ -1,7 +1,5 @@
 # PDF and Image Processing Toolkit
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-
 **PDF and Image Processing Toolkit** is an open-source project that provides a set of tools for handling PDFs and images. This toolkit includes functionality for converting PDFs to DOCX files, merging PDFs, and converting PDFs to images, making it easy to perform various PDF-related tasks efficiently.
 
 ## Features
