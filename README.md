@@ -22,9 +22,7 @@ Install the required dependencies by running:
 
 ```bash
 pip install -r requirements.txt
-```bash
 
 If an ERROR: Failed building wheel for pymupdf occurred, debug by running:
 
-```bash
 pip install pymupdf
