@@ -10,7 +10,7 @@ The **PDF and Image Processing Toolkit** is an open-source project providing a c
 
 #### Getting Started
 
-To get started with this project, ensure you have Python 3 installed on your system. Then, follow the installation instructions below to set up the required dependencies.
+To get started, make sure you have Python 3 installed on your system. Then, follow the installation instructions below to set up the required dependencies.
 
 #### Installation
 
