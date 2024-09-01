@@ -30,47 +30,6 @@ To get started with this project, ensure you have Python 3 installed on your sys
      ```bash
      pip install pymupdf
      ```
-
-#### Usage
-
-1. **Convert PDF to DOCX**:
-   - Use the `pdf2docx` library to convert PDF files to editable DOCX files. Example code:
-     ```python
-     from pdf2docx import Converter
-
-     pdf_file = 'sample.pdf'
-     docx_file = 'output.docx'
-     cv = Converter(pdf_file)
-     cv.convert(docx_file)
-     cv.close()
-     ```
-
-2. **Merge PDF Files**:
-   - Use `PyPDF2` to merge multiple PDF files into a single document. Example code:
-     ```python
-     from PyPDF2 import PdfMerger
-
-     merger = PdfMerger()
-     merger.append('file1.pdf')
-     merger.append('file2.pdf')
-     merger.write('merged_output.pdf')
-     merger.close()
-     ```
-
-3. **Convert PDF to Images**:
-   - Use `pymupdf` (or `fitz`) to convert PDF pages to images. Example code:
-     ```python
-     import fitz  # PyMuPDF
-
-     pdf_document = 'sample.pdf'
-     doc = fitz.open(pdf_document)
-
-     for page_num in range(len(doc)):
-         page = doc.load_page(page_num)
-         pix = page.get_pixmap()
-         pix.save(f'page_{page_num + 1}.png')
-     ```
-
 #### Contributing
 
 If you would like to contribute to this project, please fork the repository and submit a pull request with your changes. All contributions are welcome!
